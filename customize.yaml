@@ -1,0 +1,6 @@
+climate.main:
+  friendly_name: Water Heater
+media_player.great_room:
+  friendly_name: Roku
+media_player.spotify:
+  order: '1'

@@ -1,0 +1,81 @@
+#default_view:
+#  view: yes
+#  icon: mdi:home
+#  entities:
+#    - group.presence
+presence:
+  name: Presence
+  view: no
+  entities:
+    - device_tracker.iphone
+    - device_tracker.b4f1dab3a0cb
+media:
+  name: Media
+  view: yes
+  icon: mdi:movie
+  entities:
+  - media_player.great_room_chromecast
+  - media_player.htpc
+  - media_player.great_room
+
+tab_audio:
+  name: Audio
+  view: yes
+  icon: mdi:music
+  entities:
+    - media_player.spotify
+    - media_player.bedroom_and_kitchen
+    - media_player.bedroom_speaker
+    - media_player.everywhere
+    - media_player.kitchen_and_office
+    - media_player.kitchen_speaker
+    - media_player.office
+    - media_player.test
+
+zwave_devices:
+  name: Z-Wave Devices
+  view: no
+  icon: mdi:access-point
+  entities:
+    - zwave.aeotec_dsa02203_zstick_s2
+    - zwave.test_light
+
+tab_devices:
+  name: System
+  view: yes
+  icon: mdi:pulse
+  entities:
+    - group.zwave_devices
+    - group.water_heater
+
+water_heater:
+  name: Water Heater
+  view: no
+  entities:
+    - climate.main
+
+tab_alarm:
+  name: Alarm
+  view: yes
+  icon: mdi:security
+  entities:
+    - alarm_control_panel.home_alarm
+    - binary_sensor.front_entry_door
+    - binary_sensor.garage_entry_door
+    - binary_sensor.garage_exterior_door
+    - binary_sensor.great_room_door_east
+    - binary_sensor.great_room_doors_north
+    - binary_sensor.great_room_glass_break_1
+    - binary_sensor.great_room_glass_break_2
+    - binary_sensor.great_room_motion
+    - binary_sensor.guest_entry_door
+    - binary_sensor.guest_room_glass_break
+    - binary_sensor.kitchenhall_smoke
+    - binary_sensor.master_bedroom_smoke
+    - group.doorbell
+
+doorbell:
+  name: Doorbell
+  entities:
+    - binary_sensor.ring_front_door_ding
+    - binary_sensor.ring_front_door_motion

@@ -1,0 +1,76 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 224
+  unit_system: imperial
+  time_zone: America/Indiana/Indianapolis
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+   base_url: !secret base_url
+   api_password: !secret http_password
+   ssl_certificate: /home/homeassistant/fullchain.pem
+   ssl_key: /home/homeassistant/privkey.pem
+   
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+#conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+#map:
+
+# Track the sun
+sun:
+
+binary_sensor:
+  - platform: ring
+
+# Text to speech
+tts:
+  - platform: google
+    cache: true
+    time_memory: 300
+
+group: !include includes/groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+envisalink: !include includes/envisalink.yaml
+sensor: !include includes/sensor.yaml
+device_tracker: !include includes/device_tracker.yaml
+zwave: !include includes/zwave.yaml
+media_player: !include includes/media_player.yaml
+google_assistant: !include includes/google_assistant.yaml
+climate: !include includes/climate.yaml
+emulated_hue: !include includes/emulated_hue.yaml
+
+notify:
+  - name: pushbullet_david
+    platform: pushbullet
+    api_key: !secret pushbullet_api
+
+ring:
+  username: !secret ring_user
+  password: !secret ring_pass

@@ -1,0 +1,10 @@
+- platform: unifi
+  host: !secret unifi_host
+  username: !secret unifi_user
+  password: !secret unifi_password
+  verify_ssl: false
+  track_new_devices: false
+  ssid_filter:
+    - unifi_ssid1
+    - unifi_ssid2
+    - unifi_ssid3

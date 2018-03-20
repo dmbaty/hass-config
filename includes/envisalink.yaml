@@ -1,0 +1,56 @@
+host: 10.0.3.11
+panel_type: HONEYWELL
+user_name: user
+password: !secret envisa_password
+code: !secret envisa_code
+port: 4025
+evl_version: 3
+keepalive_interval: 60
+zonedump_interval: 30
+#panic_type: Police
+zones:
+  1:
+    name: 'Kitchen/Hall Smoke'
+    type: 'smoke'
+  2:
+    name: 'Front Entry Door'
+    type: 'door'
+  3:
+    name: 'Guest Entry Door'
+    type: 'door'
+  4:
+    name: 'Great Room Door East'
+    type: 'door'
+  5:
+    name: 'Great Room Doors North'
+    type: 'door'
+  6: 
+    name: 'Unknown (6)'
+    type: 'door'
+  7:
+    name: 'Garage Entry Door'
+    type: 'door'
+  8:
+    name: 'Garage Exterior Door'
+    type: 'door'
+  9:
+    name: 'Unknown (9)'
+    type: 'door'
+  10:
+    name: 'Great Room Motion'
+    type: 'motion'
+  11:
+    name: 'Master Bedroom Smoke'
+    type: 'smoke'
+  12:
+    name: 'Great Room Glass Break 1'
+    type: 'problem'
+  13:
+    name: 'Great Room Glass Break 2'
+    type: 'problem'
+  14:
+    name: 'Guest Room Glass Break'
+    type: 'problem'
+partitions:
+  1:
+    name: 'Home Alarm'
