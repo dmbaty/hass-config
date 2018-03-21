@@ -4,7 +4,7 @@ user_name: user
 password: !secret envisa_password
 code: !secret envisa_code
 port: 4025
-evl_version: 3
+evl_version: 4
 keepalive_interval: 60
 zonedump_interval: 30
 #panic_type: Police
