@@ -1,7 +1,6 @@
 - platform: wunderground
   api_key: !secret wunderground_api
   monitored_conditions:
-    - alerts
     - temp_f 
 - platform: fastdotcom
   minute: 30
