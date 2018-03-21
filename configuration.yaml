@@ -65,11 +65,7 @@ media_player: !include includes/media_player.yaml
 google_assistant: !include includes/google_assistant.yaml
 climate: !include includes/climate.yaml
 emulated_hue: !include includes/emulated_hue.yaml
-
-notify:
-  - name: pushbullet_david
-    platform: pushbullet
-    api_key: !secret pushbullet_api
+notify: !include includes/notify.yaml
 
 ring:
   username: !secret ring_user
