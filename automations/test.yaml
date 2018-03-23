@@ -1,0 +1,27 @@
+- alias: test
+  trigger:
+    platform: time
+    at: 00:36:00
+  action:
+    service: notify.pushbullet_david
+    data_template:
+      title: Home Assistant
+      message: It's 12:36
+- id: test code unlock
+  alias: Notify on user code unlock
+  trigger:
+  - entity_id: sensor.test_door_code
+    platform: state
+    to: U1
+  - entity_id: sensor.test_door_code
+    platform: state
+    to: U2
+  action:
+  - data_template:
+      message: Lock unlocked by user code 1 or 2
+      title: Home Assistant
+    service: notify.pushbullet_david
+  - data:
+      message: This is a test
+      title: Test
+    service: notify.gcm_html5_unnamed_device

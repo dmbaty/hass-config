@@ -1,0 +1,44 @@
+- alias: Alert when David arrives home
+  trigger:
+    platform: state
+    entity_id: device_tracker.b4f1dab3a0cb
+    from: not_home
+    to: home
+  action:
+    service: notify.pushbullet_david
+    data_template:
+      title: Home Assistant
+      message: David arrived at home
+- alias: Alert when David leaves home
+  trigger:
+    platform: state
+    entity_id: device_tracker.b4f1dab3a0cb
+    from: home
+    to: not_home
+  action:
+    service: notify.pushbullet_david
+    data_template:
+      title: Home Assistant
+      message: David left home
+- alias: Alert when Sarah leaves home
+  trigger:
+    platform: state
+    entity_id: device_tracker.iphone
+    from: home
+    to: not_home
+  action:
+    service: notify.pushbullet_david
+    data_template:
+      title: Home Assistant
+      message: Sarah left home
+- alias: Alert when Sarah arrives at home
+  trigger:
+    platform: state
+    entity_id: device_tracker.iphone
+    from: not_home
+    to: home
+  action:
+    service: notify.pushbullet_david
+    data_template:
+      title: Home Assistant
+      message: Sarah arrived at home

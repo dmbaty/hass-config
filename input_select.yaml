@@ -1,0 +1,5 @@
+home_mode:
+  options:
+    - 'Occupied'
+    - 'Away'
+    - 'Vacation'

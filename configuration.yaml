@@ -17,11 +17,12 @@ frontend:
 config:
 
 http:
-   base_url: !secret base_url
-   api_password: !secret http_password
-   ssl_certificate: /home/homeassistant/fullchain.pem
-   ssl_key: /home/homeassistant/privkey.pem
-   
+  base_url: !secret base_url
+  api_password: !secret http_password
+  ssl_certificate: /home/homeassistant/fullchain.pem
+  ssl_key: /home/homeassistant/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 4   
 
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
@@ -56,6 +57,7 @@ tts:
 
 group: !include includes/groups.yaml
 automation: !include automations.yaml
+automation old: !include_dir_merge_list automations
 script: !include scripts.yaml
 envisalink: !include includes/envisalink.yaml
 sensor: !include includes/sensor.yaml
@@ -66,7 +68,14 @@ google_assistant: !include includes/google_assistant.yaml
 climate: !include includes/climate.yaml
 emulated_hue: !include includes/emulated_hue.yaml
 notify: !include includes/notify.yaml
+input_select: !include input_select.yaml
 
 ring:
   username: !secret ring_user
   password: !secret ring_pass
+
+#locksinterface:
+#panel_custom:
+#  - name: locks
+#    sidebar_title: ZWave Locks
+#    sidebar_icon: mdi:lock
