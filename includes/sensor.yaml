@@ -9,3 +9,17 @@
     - 6
     - 12
     - 18
+- platform: template
+  sensors:
+    test_door_code:
+      friendly_name: 'Test Code'
+      value_template: >-
+        {% if is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 1") %}
+          U1
+        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 2") %}
+          U2
+        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 3") %}
+          U3
+        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 4") %}
+          U4
+        {% endif %}
