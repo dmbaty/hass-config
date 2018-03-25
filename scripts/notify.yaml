@@ -13,5 +13,9 @@ notify_important:
   sequence:
     - service: notify.pushbullet_david
       data_template:
-        title: "HASS important notification"
+        title: "HASS Important"
+        message: "{{ message }}"
+    - service: notify.gcm_html5
+      date_template:
+        title: "HASS Important"
         message: "{{ message }}"
