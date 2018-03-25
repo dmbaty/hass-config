@@ -5,6 +5,9 @@
     entity_id: group.presence
     from: 'home'
     to: 'not_home'
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
     service: input_select.select_option
     data:
@@ -17,6 +20,9 @@
     entity_id: group.presence
     from: 'not_home'
     to: 'home'
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
     service: input_select.select_option
     data:
@@ -31,6 +37,9 @@
     to: 'not_home'
     for:
       hours: 18
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
     service: input_select.select_option
     data:
@@ -41,8 +50,23 @@
   trigger:
     platform: state
     entity_id: input_select.home_mode
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
     service: script.notify_status
     data_template:
       message: >
         State changed from {{ trigger.from_state.state }} to {{ trigger.to_state.state }}
+- alias: "Alert daily when in override mode"
+  hide_entity: true
+  trigger:
+    platform: time
+    at: '10:00:00'
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') == 'Override' }}"
+  action:
+    service: script.notify_important
+    data_template:
+      message: "House in override mode until manual reset"

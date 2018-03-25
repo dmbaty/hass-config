@@ -3,6 +3,7 @@
   trigger:
     platform: state
     entity_id: input_select.home_mode
+    to: 'Away'
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
