@@ -1,0 +1,9 @@
+notify_status:
+  sequence:
+    - condition: state
+      entity_id: input_boolean.notify_status
+      state: 'on'
+    - service: notify.pushbullet_david
+      data_template:
+        title: "HASS Status"
+        message: "{{ message }}"

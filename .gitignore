@@ -2,6 +2,7 @@
 !*.yaml
 !includes
 !automations
+!scripts
 !.gitignore
 !LICENSE
 secrets.yaml

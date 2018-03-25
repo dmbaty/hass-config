@@ -1,0 +1,19 @@
+- alias: 'Turn on porch light'
+  hide_entity: true
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-00:15:00'
+  action:
+    service: script.notify_status
+    data_template:
+      message: Turning on porch light
+- alias: 'Turn off porch light'
+  hide_entity: true
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    service: script.notify_status
+    data_template:
+      message: Turning off porch light

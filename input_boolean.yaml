@@ -1,0 +1,3 @@
+notify_status:
+  name: Status notfications
+  icon: mdi:bug

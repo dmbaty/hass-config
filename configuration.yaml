@@ -46,6 +46,9 @@ logbook:
 # Track the sun
 sun:
 
+# Store input states
+recorder:
+
 binary_sensor:
   - platform: ring
 
@@ -58,7 +61,7 @@ tts:
 group: !include includes/groups.yaml
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automations
-script: !include scripts.yaml
+script: !include_dir_merge_list scripts
 envisalink: !include includes/envisalink.yaml
 sensor: !include includes/sensor.yaml
 device_tracker: !include includes/device_tracker.yaml
@@ -69,10 +72,25 @@ climate: !include includes/climate.yaml
 emulated_hue: !include includes/emulated_hue.yaml
 notify: !include includes/notify.yaml
 input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
 
 ring:
   username: !secret ring_user
   password: !secret ring_pass
+
+#mqtt:
+#  broker: 10.0.3.17
+#  discovery: true
+#  discovery_prefix: smartthings
+
+#switch:
+#  - platform: mqtt
+#    name: "Kitchen Lights"
+#    state_topic: "smartthings/Kitchen Lights/switch"
+#    command_topic: "smartthings/Kitchen Lights/switch"
+#    payload_on: "on"
+#    payload_off: "off"
+#    retain: true
 
 #locksinterface:
 #panel_custom:

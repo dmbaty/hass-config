@@ -1,0 +1,48 @@
+- alias: "Mode: home to away"
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: group.presence
+    from: 'home'
+    to: 'not_home'
+  action:
+    service: input_select.select_option
+    data:
+      entity_id: input_select.home_mode
+      option: 'Away'
+- alias: "Mode: away to home"
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: group.presence
+    from: 'not_home'
+    to: 'home'
+  action:
+    service: input_select.select_option
+    data:
+      entity_id: input_select.home_mode
+      option: 'Occupied'
+- alias: "Mode: away to vacation"
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: group.presence
+    from: 'home'
+    to: 'not_home'
+    for:
+      hours: 18
+  action:
+    service: input_select.select_option
+    data:
+      entity_id: input_select.home_mode
+      option: 'Vacation'
+- alias: "Alert on mode change"
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: input_select.home_mode
+  action:
+    service: script.notify_status
+    data_template:
+      message: >
+        State changed from {{ trigger.from_state.state }} to {{ trigger.to_state.state }}
