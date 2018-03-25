@@ -1,0 +1,26 @@
+zwave_devices:
+  name: Z-Wave Devices
+  view: no
+  icon: mdi:router-wireless
+  entities:
+    - zwave.aeotec_dsa02203_zstick_s2
+    - zwave.test_light
+
+water_heater:
+  name: Water Heater
+  view: no
+  entities:
+    - climate.main
+
+presence:
+  name: Presence
+  view: no
+  entities:
+    - device_tracker.iphone
+    - device_tracker.b4f1dab3a0cb
+
+doorbell:
+  name: Doorbell
+  entities:
+    - binary_sensor.ring_front_door_ding
+    - binary_sensor.ring_front_door_motion

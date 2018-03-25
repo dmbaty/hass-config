@@ -58,7 +58,7 @@ tts:
     cache: true
     time_memory: 300
 
-group: !include includes/groups.yaml
+group: !include_dir_merge_named groups
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automations
 script: !include_dir_merge_named scripts

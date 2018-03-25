@@ -3,13 +3,15 @@
 #  icon: mdi:home
 #  entities:
 #    - group.presence
-presence:
-  name: Presence
-  view: no
+
+tab_home:
+  name: Home-test
+  view: yes
+  icon: mdi:home
   entities:
-    - device_tracker.iphone
-    - device_tracker.b4f1dab3a0cb
-media:
+    - input_select.home_mode
+
+tab_media:
   name: Media
   view: yes
   icon: mdi:movie
@@ -32,14 +34,6 @@ tab_audio:
     - media_player.office
     - media_player.test
 
-zwave_devices:
-  name: Z-Wave Devices
-  view: no
-  icon: mdi:access-point
-  entities:
-    - zwave.aeotec_dsa02203_zstick_s2
-    - zwave.test_light
-
 tab_devices:
   name: System
   view: yes
@@ -47,12 +41,6 @@ tab_devices:
   entities:
     - group.zwave_devices
     - group.water_heater
-
-water_heater:
-  name: Water Heater
-  view: no
-  entities:
-    - climate.main
 
 tab_alarm:
   name: Alarm
@@ -74,8 +62,12 @@ tab_alarm:
     - binary_sensor.master_bedroom_smoke
     - group.doorbell
 
-doorbell:
-  name: Doorbell
+tab_debug:
+  name: Debug
+  view: yes
+  icon: mdi:bug
   entities:
-    - binary_sensor.ring_front_door_ding
-    - binary_sensor.ring_front_door_motion
+    - group.all_automations
+    - group.all_scripts
+    - group.all_devices
+    - group.zwave_devices

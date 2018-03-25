@@ -3,6 +3,7 @@
 !includes
 !automations
 !scripts
+!groups
 !.gitignore
 !LICENSE
 secrets.yaml

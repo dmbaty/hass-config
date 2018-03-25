@@ -4,3 +4,11 @@ media_player.great_room:
   friendly_name: Roku
 media_player.spotify:
   order: '1'
+input_select.home_mode:
+  friendly_name: Mode
+group.all_automations:
+  hidden: false
+  friendly_name: All automations
+group.all_scripts:
+  hidden: false
+  friendly_name: All scripts
