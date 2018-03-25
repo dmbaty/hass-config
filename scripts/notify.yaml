@@ -1,4 +1,5 @@
 notify_status:
+  alias: 'Debug status notification'
   sequence:
     - condition: state
       entity_id: input_boolean.notify_status
@@ -8,6 +9,7 @@ notify_status:
         title: "HASS Status"
         message: "{{ message }}"
 notify_important:
+  alias: 'Important notification'
   sequence:
     - service: notify.pushbullet_david
       data_template:

@@ -61,7 +61,7 @@ tts:
 group: !include includes/groups.yaml
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automations
-script: !include_dir_merge_list scripts
+script: !include_dir_merge_named scripts
 envisalink: !include includes/envisalink.yaml
 sensor: !include includes/sensor.yaml
 device_tracker: !include includes/device_tracker.yaml
