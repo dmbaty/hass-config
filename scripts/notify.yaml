@@ -16,6 +16,6 @@ notify_important:
         title: "HASS Important"
         message: "{{ message }}"
     - service: notify.gcm_html5
-      date_template:
+      data_template:
         title: "HASS Important"
         message: "{{ message }}"
