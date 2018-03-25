@@ -1,5 +1,6 @@
 home_mode:
   options:
     - 'Occupied'
+    - 'Override'
     - 'Away'
     - 'Vacation'
