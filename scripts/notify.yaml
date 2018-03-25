@@ -1,3 +1,4 @@
+# Status/debug notifications, these can be enabled/disabled
 notify_status:
   alias: 'Debug status notification'
   sequence:
@@ -8,6 +9,9 @@ notify_status:
       data_template:
         title: "HASS Status"
         message: "{{ message }}"
+
+# Important notifications (notify everyone, can't be disabled)
+# TODO: notify Sarah as well
 notify_important:
   alias: 'Important notification'
   sequence:
@@ -18,4 +22,32 @@ notify_important:
     - service: notify.gcm_html5
       data_template:
         title: "HASS Important"
+        message: "{{ message }}"
+
+# Critical notifications (notify everyone, possibly repeatedly) - used for items that need immediate attention (leaking water, furance not funcitoning, etc)
+# TODO: How to keep sending this every 30mins?
+# TODO: notify Sarah as well
+notify_cirtical:
+  alias: 'Crtical notification'
+  sequence:
+    - service: notify.pushbullet_david
+      data_template:
+        title: "HASS Critical - ACTION REQUIRED"
+        message: "{{ message }}"
+    - service: notify.gcm_html5
+      data_template:
+        title: "HASS Critical - ACTION REQUIRED"
+        message: "{{ message }}"
+
+# Notify david only, for things like failed logins
+notify_david_only:
+  alias: 'Crtical notification'
+  sequence:
+    - service: notify.pushbullet_david
+      data_template:
+        title: "HASS notification"
+        message: "{{ message }}"
+    - service: notify.gcm_html5
+      data_template:
+        title: "HASS notification"
         message: "{{ message }}"
