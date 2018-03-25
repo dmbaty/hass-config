@@ -1,0 +1,12 @@
+- alias: 'Set alarm when everyone leaves'
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: input_select.home_mode
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.home_alarm
+    - service: script.notify_important
+      date_template:
+        message: 'Everyone left and the alarm is off, setting away now'
+#Add automations to disarm when certain codes are used at lock
