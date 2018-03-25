@@ -7,3 +7,9 @@ notify_status:
       data_template:
         title: "HASS Status"
         message: "{{ message }}"
+notify_important:
+  sequence:
+    - service: notify.pushbullet_david
+      data_template:
+        title: "HASS important notification"
+        message: "{{ message }}"
