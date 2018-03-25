@@ -1,5 +1,4 @@
 - alias: 'Set alarm when everyone leaves'
-  hide_entity: true
   trigger:
     platform: state
     entity_id: input_select.home_mode

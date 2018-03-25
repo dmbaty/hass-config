@@ -1,5 +1,4 @@
 - alias: 'Turn on porch light'
-  hide_entity: true
   trigger:
     platform: sun
     event: sunset
@@ -9,7 +8,6 @@
     data_template:
       message: 'Turning on porch light'
 - alias: 'Turn off porch light'
-  hide_entity: true
   trigger:
     platform: sun
     event: sunrise
@@ -18,7 +16,6 @@
     data_template:
       message: 'Turning off porch light'
 - alias: 'Everyone left for work'
-  hide_entity: true
   trigger:
     platform: state
     entity_id: input_select.home_mode
@@ -38,7 +35,6 @@
     data_template:
       message: 'Everyone left for work'
 - alias: 'Lights on when arriving after dark'
-  hide_entity: true
   trigger:
     platform: sun
     event: sunset
