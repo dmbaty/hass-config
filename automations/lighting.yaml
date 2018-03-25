@@ -7,7 +7,7 @@
   action:
     service: script.notify_status
     data_template:
-      message: Turning on porch light
+      message: 'Turning on porch light'
 - alias: 'Turn off porch light'
   hide_entity: true
   trigger:
@@ -16,4 +16,39 @@
   action:
     service: script.notify_status
     data_template:
-      message: Turning off porch light
+      message: 'Turning off porch light'
+- alias: 'Everyone left for work'
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: input_select.home_mode
+    to: 'Away'
+  condition:
+    condition: time
+    after: '07:00:00'
+    before: '09:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: script.notify_status
+    data_template:
+      message: 'Everyone left for work'
+- alias: 'Lights on when arriving after dark'
+  hide_entity: true
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+00:20:00'
+  condition:
+    condition: template
+    value_template: "{{ states('input_select.home_mode') == 'Away' }}"
+  action:
+    service: script.notify_status
+    data_template:
+      message: "Turning lights on since everyone is arriving after dark"
+#add forced home
+#add night lighting, work automations
