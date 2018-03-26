@@ -73,6 +73,7 @@ emulated_hue: !include includes/emulated_hue.yaml
 notify: !include includes/notify.yaml
 input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
+camera: !include includes/camera.yaml
 
 ring:
   username: !secret ring_user

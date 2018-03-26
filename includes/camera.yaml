@@ -1,0 +1,11 @@
+# Connect to ivideon to pull still images from cameras
+# Get camera IDs here: http://[ivideon ip]:8080/streams/info?sessionId=[local ivdieon password]
+# server can also be [ivideon ip]:8080 instead of 1
+# JPG URL is: http://[ivideon ip]:8080/preview/live?server=1&camera=[camera ID]&sessionId=[local ivdieon password]
+# For some reason, the resolution is always 640x480 not the native resolution of the camera
+  - platform: generic
+    name: "Garage camera"
+    still_image_url: !secret garage_camera_url
+  - platform: generic
+    name: "Great room camera"
+    still_image_url: !secret great_room_camera_url
