@@ -8,7 +8,12 @@ input_select.home_mode:
   friendly_name: Mode
 group.all_automations:
   hidden: false
+  control: hidden
   friendly_name: All automations
 group.all_scripts:
   hidden: false
+  control: hidden
   friendly_name: All scripts
+group.all_devices:
+  hidden: false
+  friendly_name: All devices
