@@ -37,3 +37,13 @@ home_status:
     - input_select.home_mode
     - device_tracker.iphone
     - device_tracker.b4f1dab3a0cb
+
+# From: https://github.com/master-kenobi/ha-alarmclock
+alarmclock:
+  name: Wake Me Up
+  entities: 
+    - automation.wake_me_up
+    - sensor.alarm_time
+    - input_number.alarmhour
+    - input_number.alarmminutes
+    - input_boolean.alarmweekday

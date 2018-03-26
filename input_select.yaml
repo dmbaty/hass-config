@@ -1,4 +1,5 @@
 home_mode:
+  icon: mdi:home-account
   options:
     - 'Occupied'
     - 'Override'

@@ -2,13 +2,13 @@
   api_key: !secret wunderground_api
   monitored_conditions:
     - temp_f 
-- platform: fastdotcom
-  minute: 30
-  hour:
-    - 0
-    - 6
-    - 12
-    - 18
+#- platform: fastdotcom
+#  minute: 30
+#  hour:
+#    - 0
+#    - 6
+#    - 12
+#    - 18
 - platform: template
   sensors:
     test_door_code:
@@ -23,3 +23,17 @@
         {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 4") %}
           U4
         {% endif %}
+
+# From: https://github.com/master-kenobi/ha-alarmclock
+- platform: template
+  sensors:
+    alarm_time:
+      friendly_name: 'Time'
+      value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'time_date'
+    - 'time_utc'

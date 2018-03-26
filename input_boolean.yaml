@@ -1,3 +1,8 @@
 notify_status:
   name: Status notfications
   icon: mdi:bug
+
+# From: https://github.com/master-kenobi/ha-alarmclock
+alarmweekday:
+  name: Weekdays Only
+  icon: mdi:calendar
