@@ -1,0 +1,14 @@
+# Security related automations (ie, failed login attempts, etc)
+# TODO: review other security automation options
+- alias: "Send notification upon failed login attempt"
+  trigger:
+  - platform: state
+    entity_id: persistent_notification.httplogin
+  condition:
+  - condition: template
+    value_template: "{{ trigger.to_state.state != 'None' }}"
+  action:
+  - service: notify.pushbullet_david
+    data_template:
+      message: 'url: https://whatismyipaddress.com/ip/{{ states.persistent_notification.httplogin.attributes.message.split ("from ") [1]}}'
+      title: "{{ states.persistent_notification.httplogin.attributes.message }}"

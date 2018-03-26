@@ -1,3 +1,4 @@
+# Configuration of tab groups
 #default_view:
 #  view: yes
 #  icon: mdi:home
@@ -9,7 +10,7 @@ tab_home:
   view: yes
   icon: mdi:home
   entities:
-    - input_select.home_mode
+    - group.home_status
 
 tab_media:
   name: Media
@@ -42,6 +43,14 @@ tab_devices:
     - group.zwave_devices
     - group.water_heater
 
+tab_camera:
+  name: Cameras
+  view: yes
+  icon: mdi:cctv
+  entities:
+    - camera.great_room_camera
+    - camera.garage_camera
+
 tab_alarm:
   name: Alarm
   view: yes
@@ -67,7 +76,9 @@ tab_debug:
   view: yes
   icon: mdi:bug
   entities:
+    - group.debug
     - group.all_automations
     - group.all_scripts
     - group.all_devices
+    - group.presence
     - group.zwave_devices

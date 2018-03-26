@@ -1,3 +1,4 @@
+# Configuration of non-tab groups
 zwave_devices:
   name: Z-Wave Devices
   view: no
@@ -24,3 +25,15 @@ doorbell:
   entities:
     - binary_sensor.ring_front_door_ding
     - binary_sensor.ring_front_door_motion
+
+debug:
+  name: "Debug settings"
+  entities:
+    - input_boolean.notify_status
+
+home_status:
+  name: "Status"
+  entities:
+    - input_select.home_mode
+    - device_tracker.iphone
+    - device_tracker.b4f1dab3a0cb

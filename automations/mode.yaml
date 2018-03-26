@@ -1,3 +1,4 @@
+# Mode automations (state transitions, alert for state transitions, and daily alert for override mode)
 - alias: "Mode: home to away"
   trigger:
     platform: state

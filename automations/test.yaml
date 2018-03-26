@@ -1,3 +1,5 @@
+# Test automations, will be removed in the future
+# TODO: Remove this...
 - alias: test
   trigger:
     platform: time

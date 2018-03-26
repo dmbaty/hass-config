@@ -1,3 +1,4 @@
+# Alarm system related automations
 - alias: 'Set alarm when everyone leaves'
   trigger:
     platform: state

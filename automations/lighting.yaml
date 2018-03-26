@@ -1,3 +1,7 @@
+# All lighting related automations (timing based)
+# TODO: Add vacation lighting automations
+# TODO: add checks for override mode as needed
+# TODO: add night lighting, work automations
 - alias: 'Turn on porch light'
   trigger:
     platform: sun
@@ -7,6 +11,7 @@
     service: script.notify_status
     data_template:
       message: 'Turning on porch light'
+
 - alias: 'Turn off porch light'
   trigger:
     platform: sun
@@ -15,6 +20,16 @@
     service: script.notify_status
     data_template:
       message: 'Turning off porch light'
+
+- alias: 'Turn off lights at 2am'
+  trigger:
+    platform: time
+    at: '02:00:00'
+  action:
+    service: script.notify_status
+    data_template:
+      message: 'Turning lights off at 2am'
+
 - alias: 'Everyone left for work'
   trigger:
     platform: state
@@ -34,6 +49,7 @@
     service: script.notify_status
     data_template:
       message: 'Everyone left for work'
+
 - alias: 'Lights on when arriving after dark'
   trigger:
     platform: sun
@@ -46,5 +62,3 @@
     service: script.notify_status
     data_template:
       message: "Turning lights on since everyone is arriving after dark"
-#add forced home
-#add night lighting, work automations
