@@ -28,7 +28,7 @@ notify_important:
 # TODO: How to keep sending this every 30mins?
 # TODO: notify Sarah as well
 notify_cirtical:
-  alias: 'Crtical notification'
+  alias: 'Critical notification'
   sequence:
     - service: notify.pushbullet_david
       data_template:
@@ -41,7 +41,7 @@ notify_cirtical:
 
 # Notify david only, for things like failed logins
 notify_david_only:
-  alias: 'Crtical notification'
+  alias: 'David notification'
   sequence:
     - service: notify.pushbullet_david
       data_template:
@@ -50,4 +50,22 @@ notify_david_only:
     - service: notify.gcm_html5
       data_template:
         title: "HASS notification"
+        message: "{{ message }}"
+
+# TTS notification for all google home and google mini devices
+notify_audio_all:
+  alias: "TTS notification on all google home/mini"
+  sequence:
+    - service: tts.google_say
+      entity_id: media_player.alert
+      data_template:
+        message: "{{ message }}"
+
+# TTS notification for David's office
+notify_audio_office:
+  alias: "TTS notification on office google mini"
+  sequence:
+    - service: tts.google_say
+      entity_id: media_player.office_mini
+      data_template:
         message: "{{ message }}"
