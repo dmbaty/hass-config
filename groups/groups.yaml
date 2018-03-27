@@ -47,3 +47,12 @@ alarmclock:
     - input_number.alarmhour
     - input_number.alarmminutes
     - input_boolean.alarmweekday
+
+# TODO: continue adding lights to this
+all_lights:
+  name: "All lights"
+  entities:
+    - light.great_room_lights_east
+    - light.great_room_lights_west
+    - light.kitchen_hanging_lights
+    - switch.kitchen_lights

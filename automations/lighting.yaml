@@ -8,28 +8,35 @@
     event: sunset
     offset: '-00:15:00'
   action:
-    service: script.notify_status
-    data_template:
-      message: 'Turning on porch light'
-
+    - service: script.notify_status
+      data_template:
+        message: 'Turning on porch light'
+    - service: switch.turn_on
+      data:
+        entity_id: switch.porch_light
 - alias: 'Turn off porch light'
   trigger:
     platform: sun
     event: sunrise
   action:
-    service: script.notify_status
-    data_template:
-      message: 'Turning off porch light'
-
+    - service: script.notify_status
+      data_template:
+        message: 'Turning off porch light'
+    - service: switch.turn_off
+      data:
+        entity_id: switch.porch_light
 - alias: 'Turn off lights at 2am'
   trigger:
     platform: time
     at: '02:00:00'
   action:
-    service: script.notify_status
-    data_template:
-      message: 'Turning lights off at 2am'
-
+    - service: script.notify_status
+      data_template:
+        message: 'Turning lights off at 2am'
+    - service: light.turn_off
+      data:
+        entity_id: group.all_lights
+# TODO: Clean this up, move to a different file?  This should not occur in override mode
 - alias: 'Everyone left for work'
   trigger:
     platform: state
@@ -46,10 +53,13 @@
       - thu
       - fri
   action:
-    service: script.notify_status
-    data_template:
-      message: 'Everyone left for work'
-
+    - service: script.notify_status
+      data_template:
+        message: 'Everyone left for work'
+    - service: light.turn_off
+      data:
+        entity_id: group.all_lights
+    - service: script.thermostats_away
 - alias: 'Lights on when arriving after dark'
   trigger:
     platform: sun
@@ -59,6 +69,9 @@
     condition: template
     value_template: "{{ states('input_select.home_mode') == 'Away' }}"
   action:
-    service: script.notify_status
-    data_template:
-      message: "Turning lights on since everyone is arriving after dark"
+    - service: script.notify_status
+      data_template:
+        message: "Turning lights on since everyone is arriving after dark"
+    - service: switch.turn_on
+      data:
+        entity_id: switch.kitchen_lights

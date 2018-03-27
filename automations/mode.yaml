@@ -9,10 +9,11 @@
     condition: template
     value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
-    service: input_select.select_option
-    data:
-      entity_id: input_select.home_mode
-      option: 'Away'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.home_mode
+        option: 'Away'
+    - service: script.thermostats_away
 - alias: "Mode: away to home"
   trigger:
     platform: state
@@ -23,10 +24,11 @@
     condition: template
     value_template: "{{ states('input_select.home_mode') != 'Override' }}"
   action:
-    service: input_select.select_option
-    data:
-      entity_id: input_select.home_mode
-      option: 'Occupied'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.home_mode
+        option: 'Occupied'
+    - service: script.thermostats_away
 - alias: "Mode: away to vacation"
   trigger:
     platform: state

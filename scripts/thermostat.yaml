@@ -1,0 +1,59 @@
+thermostats_home:
+  alias: "Set thermostats to home mode"
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_heat_setpoint
+        temperature: 67
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_cool_setpoint
+        temperature: 73
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_heat_setpoint
+        temperature: 67
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_cool_setpoint
+        temperature: 73
+
+thermostats_away:
+  alias: "Set thermostats to away mode"
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_heat_setpoint
+        temperature: 62
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_cool_setpoint
+        temperature: 77
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_heat_setpoint
+        temperature: 62
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_cool_setpoint
+        temperature: 77
+
+thermostats_night:
+  alias: "Set thermostats to night mode"
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_heat_setpoint
+        temperature: 62
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.main_thermostat_cool_setpoint
+        temperature: 77
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_heat_setpoint
+        temperature: 67
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_bedroom_thermostat_cool_setpoint
+        temperature: 73

@@ -1,0 +1,19 @@
+- alias: 'Turn theromstats to night mode'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    - service: script.notify_status
+      data_template:
+        message: 'Setting thermostats to night mode'
+    - service: script.thermostats_night
+
+- alias: 'Turn theromstats to home mode'
+  trigger:
+    platform: time
+    at: '17:00:00'
+  action:
+    - service: script.notify_status
+      data_template:
+        message: 'Setting thermostats to home mode'
+    - service: script.thermostats_home
