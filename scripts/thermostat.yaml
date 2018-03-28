@@ -1,6 +1,9 @@
 thermostats_home:
   alias: "Set thermostats to home mode"
   sequence:
+    - service: script.notify_status
+      data_template:
+        message: 'Setting thermostats to home mode'
     - service: climate.set_temperature
       data:
         entity_id: climate.main_thermostat_heat_setpoint
@@ -21,6 +24,9 @@ thermostats_home:
 thermostats_away:
   alias: "Set thermostats to away mode"
   sequence:
+    - service: script.notify_status
+      data_template:
+        message: 'Setting thermostats to away mode'
     - service: climate.set_temperature
       data:
         entity_id: climate.main_thermostat_heat_setpoint
@@ -41,6 +47,9 @@ thermostats_away:
 thermostats_night:
   alias: "Set thermostats to night mode"
   sequence:
+    - service: script.notify_status
+      data_template:
+        message: 'Setting thermostats to night mode'
     - service: climate.set_temperature
       data:
         entity_id: climate.main_thermostat_heat_setpoint
