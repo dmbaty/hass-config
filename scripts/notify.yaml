@@ -1,4 +1,5 @@
-# Status/debug notifications, these can be enabled/disabled
+### Status/debug notifications, these can be enabled/disabled
+
 notify_status:
   alias: 'Debug status notification'
   sequence:
@@ -24,7 +25,7 @@ notify_important:
         title: "HASS Important"
         message: "{{ message }}"
 
-# Critical notifications (notify everyone, possibly repeatedly) - used for items that need immediate attention (leaking water, furance not funcitoning, etc)
+# Critical notifications (notify everyone, possibly repeatedly) - used for items that need immediate attention (leaking water, furnace not functioning, etc)
 # TODO: How to keep sending this every 30mins?
 # TODO: notify Sarah as well
 notify_cirtical:
