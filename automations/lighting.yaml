@@ -44,8 +44,8 @@
     to: 'Away'
   condition:
     condition: time
-    after: '07:00:00'
-    before: '09:00:00'
+    after: '05:00:00'
+    before: '09:30:00'
     weekday:
       - mon
       - tue
