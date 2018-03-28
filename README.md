@@ -1,8 +1,7 @@
 ## Home Assistant Configuration
 Currently I'm running this in LXC container on a proxmox machine.  This config is still a work in progress but hopefully it will help others who are learning Home Assistant.
 
-Note: many of the automations here are for testing purposes only right now.  I'll have to get my Z-Wave network moved over to HASS to make them actually do something.
-
+I'm still working on more complex automations.
 ### Components
 - Weather
   - wunderground
@@ -11,9 +10,13 @@ Note: many of the automations here are for testing purposes only right now.  I'l
 - Climate
   - Econet (hot water heater)
 - Z-Wave
-  - Currently using a Aeon Labs Z-Stick (old, 300 series based), plan to move to 500 series USB stick soon
-  - Working to get notification and user code config with Schlage Connect (BE469/BE468) and FE599 locks
-  - Plan to move rest of Z-Wave devices to HASS soon (~10 lights, 2 thermostats, a few sensors, etc)
+  - Currently using a Aeon Labs Z-Stick gen 5
+  - A random mix of light modules/switches/bulbs, most are GE/Jasco
+    - Some require a periodic power cycle (via the pull tab) which is a bit frustrating
+    - Some appear to work OK but won't send a node info frame (to trigger the add/remove from the network) until a power cycle
+  - Schlage FE599 and a few Schlage Connect (BE469/BE468) locks
+    - Working to get notifications when certain user codes are used and user code configuration working with these
+    - Notifying when a user code is used on the FE599 will be difficult - the alarm values don't register a change if the same code is used again and again
 - Emulated Hue
   - Mostly for Alexa integration
 - Google Assistant
@@ -38,7 +41,9 @@ Again, more to come here...
 ### Debug
 I have a notify_status script to send lots of notifications to track what is happening in real time.  This is meant for debugging and can be easily enabled/disabled with a input_binary control.
 
-notify_important is meant for notifications that can't be muted.  I may create a notify_critical in the future.
+notify_important is meant for notifications that can't be muted.
+
+notify_critical is meant for time senstive notifications (water leaks, furnace not running correctly, etc).
 
 ### Future improvements
 Just about everything...
