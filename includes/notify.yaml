@@ -1,7 +1,37 @@
+# Pushbullet for David
 - name: pushbullet_david
   platform: pushbullet
   api_key: !secret pushbullet_api
+
+# HTML5 notifications
+# TODO: add friendly name for HTML5 notification enabled devices
 - name: gcm_html5
   platform: html5
   gcm_api_key: !secret gcm_key
   gcm_sender_id: !secret gcm_server_id
+
+# Send a text to Sarah using the carrier's email to text service
+- name: sarah_text
+  platform: smtp
+  server: smtp.gmail.com
+  port: 587
+  timeout: 15
+  sender: !secret email_sender
+  encryption: starttls
+  username: !secret email_sender
+  password: !secret email_pass
+  recipient:
+    - !secret email_text_sarah
+
+# Send a text to Sarah using the carrier's email to text service
+- name: david_text
+  platform: smtp
+  server: smtp.gmail.com
+  port: 587
+  timeout: 15
+  sender: !secret email_sender
+  encryption: starttls
+  username: !secret email_sender
+  password: !secret email_pass
+  recipient:
+    - !secret email_text_david

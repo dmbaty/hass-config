@@ -12,7 +12,6 @@ notify_status:
         message: "{{ message }}"
 
 # Important notifications (notify everyone, can't be disabled)
-# TODO: notify Sarah as well
 notify_important:
   alias: 'Important notification'
   sequence:
@@ -24,10 +23,13 @@ notify_important:
       data_template:
         title: "HASS Important"
         message: "{{ message }}"
+    - service: notify.sarah_text
+      data_template:
+        title: "Hass Important"
+        message: "{{ message }}"
 
 # Critical notifications (notify everyone, possibly repeatedly) - used for items that need immediate attention (leaking water, furnace not functioning, etc)
 # TODO: How to keep sending this every 30mins?
-# TODO: notify Sarah as well
 notify_cirtical:
   alias: 'Critical notification'
   sequence:
@@ -36,6 +38,14 @@ notify_cirtical:
         title: "HASS Critical - ACTION REQUIRED"
         message: "{{ message }}"
     - service: notify.gcm_html5
+      data_template:
+        title: "HASS Critical - ACTION REQUIRED"
+        message: "{{ message }}"
+    - service: notify.sarah_text
+      data_template:
+        title: "HASS Critical - ACTION REQUIRED"
+        message: "{{ message }}"
+    - service: notify.david_text
       data_template:
         title: "HASS Critical - ACTION REQUIRED"
         message: "{{ message }}"
