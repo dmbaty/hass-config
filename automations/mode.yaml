@@ -28,7 +28,7 @@
       data:
         entity_id: input_select.home_mode
         option: 'Occupied'
-    - service: script.thermostats_away
+    - service: script.thermostats_home
 - alias: "Mode: away to vacation"
   trigger:
     platform: state
