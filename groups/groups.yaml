@@ -1,11 +1,4 @@
-# Configuration of non-tab groups
-zwave_devices:
-  name: Z-Wave Devices
-  view: no
-  icon: mdi:router-wireless
-  entities:
-    - zwave.aeotec_dsa02203_zstick_s2
-    - zwave.test_light
+### Configuration of non-tab groups
 
 water_heater:
   name: Water Heater
@@ -56,3 +49,21 @@ all_lights:
     - light.great_room_lights_west
     - light.kitchen_hanging_lights
     - switch.kitchen_lights
+    - light.stupid_lights
+    - light.great_room_davids_lamp
+    - light.master_bedroom_light
+    - light.master_bedroom_davids_lamp
+    - light.master_bedroom_sarahs_lamp
+    - light.garage_entry_lights
+
+bedroom_lamps:
+  name: "Bedroom Lamps"
+  entities:
+    - light.master_bedroom_davids_lamp
+    - light.master_bedroom_sarahs_lamp
+
+great_room:
+  name: "Great Room"
+  entities:
+    - light.great_room_lights_west
+    - light.great_room_lights_east
