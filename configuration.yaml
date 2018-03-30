@@ -89,6 +89,7 @@ input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
 camera: !include includes/camera.yaml
+light: !include includes/light.yaml
 
 ring:
   username: !secret ring_user

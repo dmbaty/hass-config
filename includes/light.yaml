@@ -1,0 +1,11 @@
+- platform: group
+  name: "Bedroom Lamps"
+  entities:
+  - light.master_bedroom_davids_lamp
+  - light.master_bedroom_sarahs_lamp
+
+- platform: group
+  name: "Great Room"
+  entities:
+    - light.great_room_lights_west
+    - light.great_room_lights_east
