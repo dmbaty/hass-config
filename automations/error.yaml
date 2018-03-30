@@ -1,1 +1,12 @@
+### Monitoring for a variety of error conditions
 # TODO: Add detection of general errors - furnace out of temp, water leak, etc
+
+# Detection for keypad tampering (for Schlage FE599 and BE369 locks)
+- alias: 'Keypad disabled'
+  trigger:
+    platform: template
+    value_template: "{% if is_state('sensor.garage_lock_alarm_type', '96') %} true {% endif %}"
+  action:
+    - service: script.notify_important
+      data_template:
+        message: "Keypad tamper detected at Garage Lock"
