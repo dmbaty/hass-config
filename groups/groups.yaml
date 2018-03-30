@@ -56,14 +56,3 @@ all_lights:
     - light.master_bedroom_sarahs_lamp
     - light.garage_entry_lights
 
-bedroom_lamps:
-  name: "Bedroom Lamps"
-  entities:
-    - light.master_bedroom_davids_lamp
-    - light.master_bedroom_sarahs_lamp
-
-great_room:
-  name: "Great Room"
-  entities:
-    - light.great_room_lights_west
-    - light.great_room_lights_east
