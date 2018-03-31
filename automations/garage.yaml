@@ -1,6 +1,8 @@
 ### Automations related to the garage doors
 
 - alias: 'Garage Door Sarah Left Open'
+  hide_entity: true
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.garage_door_sarah
@@ -13,8 +15,8 @@
       message: "Sarah's garage door left open for 5 minutes"
 
 - alias: 'Garage Door David Left Open'
-#  hide_entity: true
-#  initial_state: 'on'
+  hide_entity: true
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.garage_door_david
