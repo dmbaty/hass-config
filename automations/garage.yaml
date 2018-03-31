@@ -1,1 +1,27 @@
-# TODO: Add automations for garage left open
+### Automations related to the garage doors
+
+- alias: 'Garage Door Sarah Left Open'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.garage_door_sarah
+    to: 'on'
+    for:
+      minutes: 5
+  action:
+    service: script.notify_important
+    data_template:
+      message: "Sarah's garage door left open for 5 minutes"
+
+- alias: 'Garage Door David Left Open'
+#  hide_entity: true
+#  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.garage_door_david
+    to: 'on'
+    for:
+      minutes: 5
+  action:
+    service: script.notify_david_only
+    data_template:
+      message: "David's garage door left open for 5 minutes"
