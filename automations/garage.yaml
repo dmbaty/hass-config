@@ -22,6 +22,6 @@
     for:
       minutes: 5
   action:
-    service: script.notify_david_only
+    service: script.notify_important
     data_template:
       message: "David's garage door left open for 5 minutes"
