@@ -7,3 +7,6 @@ exposed_domains:
   - light
   - group
   - media_player
+entity_config:
+  script.watch_tv:
+   expose: true

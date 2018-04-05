@@ -1,0 +1,25 @@
+watch_tv:
+  alias: 'Watch TV'
+  sequence:
+    - service: script.notify_status
+      data_template:
+        message: 'Running watch tv'
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.great_room_davids_lamp
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.great_room_lights_west
+          - light.great_room_lights_east
+          - light.kitchen_hanging_lights
+          - light.stupid_lights
+          - light.garage_entry_lights
+    - service: switch.turn_off
+      data:
+        entity_id:
+          - switch.kitchen_lights
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.receiver

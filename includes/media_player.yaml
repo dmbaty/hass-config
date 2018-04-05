@@ -7,3 +7,6 @@
   client_secret: !secret spotify_client_secret
 - platform: roku
   host: 10.0.3.26
+- platform: onkyo
+  host: 10.0.0.10
+  name: receiver
