@@ -17,21 +17,46 @@
       data_template:
         message: 'Everyone left and the alarm is off, setting away now'
 
+# Delay all automations so that the alarm trigger below doesn't disarm on every startup
+- id: delayautomationsonrestart
+  alias: 'Delay automations on restart'
+  hide_entity: true
+  trigger:
+     platform: homeassistant
+     event: start
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id:
+          - group.all_automations
+    - delay:
+        seconds: 10
+    - service: automation.turn_on
+      data:
+        entity_id:
+          - group.all_automations
+
 # TODO: Make this less terrible
+# Note: this will trigger on every startup without the automation hack above
+# This triggers every second - it doesn't seem to cause high CPU usage, but YMMV
 - alias: "Disarm alarm with Sarah or David's code"
   trigger:
     platform: time
     seconds: '/1'
   condition:
-    condition: or
-    conditions:
-      - condition: template
-        value_template: "{% if as_timestamp(now()) - as_timestamp(states.sensor.schlage_fe599gr_wireless_door_lock_alarm_level.last_changed) < 1 and is_state('sensor.garage_lock_alarm_type', '16') and is_state('sensor.garage_lock_alarm_level', '1') %} true {% endif %}"
-      - condition: template
-        value_template: "{% if as_timestamp(now()) - as_timestamp(states.sensor.schlage_fe599gr_wireless_door_lock_alarm_level.last_changed) < 1 and is_state('sensor.garage_lock_alarm_type', '16') and is_state('sensor.garage_lock_alarm_level', '2') %} true {% endif %}"
+    condition: template
+    value_template: >
+      {% if as_timestamp(now()) - as_timestamp(states.sensor.garage_lock_alarm_type.last_changed) < 1 %} 
+        {% if is_state('sensor.garage_lock_alarm_type', '16') and not is_state('alarm_control_panel.home_alarm','disarmed') %}
+          {% if is_state('sensor.garage_lock_alarm_level', '1') or is_state('sensor.garage_lock_alarm_level', '2') %}
+            true
+          {% endif %}
+        {% endif %}
+      {% endif %}
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
     - service: script.notify_david_only
       data_template:
         message: "Disarming based on garage lock code"
+
