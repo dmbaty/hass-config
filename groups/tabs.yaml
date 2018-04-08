@@ -11,7 +11,13 @@ tab_home:
   icon: mdi:home
   entities:
     - group.home_status
-    - group.alarmclock
+#    - group.alarmclock
+    - group.laundry
+    - group.light_groups
+    - group.all_lights
+    - group.smart_home
+    - camera.garage_camera
+    - camera.great_room_camera
 
 tab_media:
   name: Media
@@ -34,7 +40,6 @@ tab_audio:
     - media_player.kitchen_and_office
     - media_player.kitchen_speaker
     - media_player.office
-    - media_player.test
 
 tab_devices:
   name: System

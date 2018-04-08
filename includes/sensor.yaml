@@ -9,20 +9,87 @@
 #    - 6
 #    - 12
 #    - 18
+#if (as_timestamp(now()) - as_timestamp(sensor.schlage_fe599gr_wireless_door_lock_alarm_level) < 10) 
 - platform: template
   sensors:
     test_door_code:
-      friendly_name: 'Test Code'
+      friendly_name: 'Time based FE599 test'
       value_template: >-
-        {% if is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 1") %}
-          U1
-        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 2") %}
-          U2
-        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 3") %}
-          U3
-        {% elif is_state_attr("lock.locked_7", "lock_status", "Unlocked with Keypad by user 4") %}
-          U4
+        {% if as_timestamp(now()) - as_timestamp(states.sensor.schlage_fe599gr_wireless_door_lock_alarm_level.last_changed) < 5 and is_state('sensor.schlage_fe599gr_wireless_door_lock_alarm_type', '16') %}
+          {{ states.sensor.schlage_fe599gr_wireless_door_lock_alarm_level.state }}
+        {% else %}
+          0
         {% endif %}
+
+- platform: template
+  sensors:
+    test_door_code_no_time:
+      friendly_name: 'Non-time based FE599 test'
+      value_template: >-
+        {% if is_state('sensor.schlage_fe599gr_wireless_door_lock_alarm_type', '16') %}
+          {{ states.sensor.schlage_fe599gr_wireless_door_lock_alarm_level.state }}
+        {% else %}
+          0
+        {% endif %}
+
+
+- platform: template
+  sensors:
+    garage_code_unlocked:
+      friendly_name: "Code used to unlock garage lock"
+      value_template: >
+        {% if is_state('sensor.garage_lock_alarm_level', '1') and is_state('sensor.garage_lock_alarm_type', '16') %}
+          U1
+        {% elif is_state('sensor.garage_lock_alarm_level', '2') and is_state('sensor.garage_lock_alarm_type', '16') %}
+          U2
+        {% endif %}
+
+- platform: template
+  sensors:
+    washing_machine_status:
+      friendly_name: "Washing machine status"
+      value_template: >
+        {% if states('sensor.washing_machine_power') | int > 1 %}
+          Running
+        {% else %}
+          Off
+        {% endif %}
+    dryer_status:
+      friendly_name: "Dryer status"
+      value_template: >
+        {% if states('sensor.dryer_burglar') | int == 2 %}
+          Running
+        {% else %}
+          Off
+        {% endif %}
+
+# TODO: add smoke detector battery
+- platform: template
+  sensors:
+    dryer_battery:
+      friendly_name: "Dryer sensor battery"
+      value_template: '{{ states.zwave.dryer.attributes.battery_level }}'
+      unit_of_measurement: '%'
+    garage_lock_battery:
+      friendly_name: "Garage lock battery"
+      value_template: '{{ states.zwave.garage_lock.attributes.battery_level }}'
+      unit_of_measurement: '%'
+    deck_lock_battery:
+      friendly_name: "Deck lock battery"
+      value_template: '{{ states.zwave.deck_lock.attributes.battery_level }}'
+      unit_of_measurement: '%'
+    garage_door_sarah_battery:
+      friendly_name: "Garage door Sarah sensor battery"
+      value_template: '{{ states.zwave.garage_door_sarah.attributes.battery_level }}'
+      unit_of_measurement: '%'
+    garage_door_david_battery:
+      friendly_name: "Garage door David sensor battery"
+      value_template: '{{ states.zwave.garage_door_david.attributes.battery_level }}'
+      unit_of_measurement: '%'
+    multisensor_1_battery:
+      friendly_name: "Multisensor 1 battery"
+      value_template: '{{ states.zwave.multisensor_1.attributes.battery_level }}'
+      unit_of_measurement: '%'
 
 # From: https://github.com/master-kenobi/ha-alarmclock
 - platform: template

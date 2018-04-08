@@ -11,7 +11,7 @@ presence:
   view: no
   entities:
     - device_tracker.iphone
-    - device_tracker.b4f1dab3a0cb
+    - device_tracker.404e3682e4bd
 
 doorbell:
   name: Doorbell
@@ -29,7 +29,7 @@ home_status:
   entities:
     - input_select.home_mode
     - device_tracker.iphone
-    - device_tracker.b4f1dab3a0cb
+    - device_tracker.404e3682e4bd
 
 # From: https://github.com/master-kenobi/ha-alarmclock
 alarmclock:
@@ -56,3 +56,30 @@ all_lights:
     - light.master_bedroom_sarahs_lamp
     - light.garage_entry_lights
 
+light_groups:
+  name: "Light Groups"
+  entities:
+    - light.bedroom_lamps
+    - light.great_room
+
+smart_home:
+  name: "Smart Home Control"
+  entities:
+    - lock.garage_lock
+    - lock.deck_lock
+
+laundry:
+  name: "Laundry status"
+  entities:
+    - sensor.washing_machine_status
+    - sensor.dryer_status
+
+batteries:
+  name: "Battery levels"
+  entities:
+    - sensor.dryer_battery
+    - sensor.garage_door_sarah_battery
+    - sensor.garage_door_david_battery
+    - sensor.garage_lock_battery
+    - sensor.deck_lock_battery
+    - sensor.multisensor_1_battery
