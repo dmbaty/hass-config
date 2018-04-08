@@ -22,6 +22,24 @@
   action:
     - service: script.thermostats_home
 
+- alias: 'Adjust thermostats on early arrival'
+  trigger:
+    platform: state
+    entity_id: input_select.home_mode
+    from: 'Away'
+    to: 'Home'
+  condition:
+    condition: time
+    before: '17:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: script.thermostats_home
+
 - alias: 'Thermostats - vacation'
   trigger:
     platform: state
