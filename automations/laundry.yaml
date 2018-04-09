@@ -31,10 +31,9 @@
     after: '08:00:00'
     before: '23:00:00'
   action:
-    - service: tts.google_say
-      entity_id: media_player.alert
+    - service: script.notify_audio_all
       data_template:
-        message: 'The dryer is done'
+        message: 'Dryer is done'
 
 - alias: 'Washing machine done voice'
   trigger:
@@ -46,7 +45,6 @@
     after: '08:00:00'
     before: '23:00:00'
   action:
-    - service: tts.google_say
-      entity_id: media_player.alert
+    - service: script.notify_audio_all
       data_template:
-        message: 'The washing machine is done'
+        message: 'Washing machine is done'
