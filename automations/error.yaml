@@ -10,3 +10,15 @@
     - service: script.notify_important
       data_template:
         message: "Keypad tamper detected at Garage Lock"
+
+- alias: 'Water leak detected'
+  trigger:
+    platform: template
+    value_template: >
+      {% if is_state('sensor.everspring_st812_flood_detector_flood', '255') %}
+        true
+      {% endif %}
+  action:
+    - service: script.notify_critical
+      data_template:
+        message: "Water leak detected"
