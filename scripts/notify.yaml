@@ -10,10 +10,6 @@ notify_status:
       data_template:
         title: "HASS Status"
         message: "{{ message }}"
-    - service: notify.gcm_html5
-      data_template:
-        title: "HASS Status"
-        message: "{{ message }}"
 
 # Important notifications (notify everyone, can't be disabled)
 notify_important:
