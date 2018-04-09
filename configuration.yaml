@@ -7,9 +7,6 @@ homeassistant:
   time_zone: America/Indiana/Indianapolis
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-#introduction:
-
 # Enables the frontend
 frontend:
 
@@ -62,6 +59,8 @@ sun:
 
 # Store input states
 recorder:
+  purge_keep_days: 2
+  purge_interval: 1
 
 # Text to speech
 tts:
@@ -92,23 +91,3 @@ light: !include includes/light.yaml
 ring:
   username: !secret ring_user
   password: !secret ring_pass
-
-#mqtt:
-#  broker: 10.0.3.17
-#  discovery: true
-#  discovery_prefix: smartthings
-
-#switch:
-#  - platform: mqtt
-#    name: "Kitchen Lights"
-#    state_topic: "smartthings/Kitchen Lights/switch"
-#    command_topic: "smartthings/Kitchen Lights/switch"
-#    payload_on: "on"
-#    payload_off: "off"
-#    retain: true
-
-#locksinterface:
-#panel_custom:
-#  - name: locks
-#    sidebar_title: ZWave Locks
-#    sidebar_icon: mdi:lock
