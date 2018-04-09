@@ -23,3 +23,6 @@ watch_tv:
     - service: media_player.turn_on
       data:
         entity_id: media_player.receiver
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.kitchen_speaker
