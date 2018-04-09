@@ -10,6 +10,10 @@ notify_status:
       data_template:
         title: "HASS Status"
         message: "{{ message }}"
+    - service: notify.gcm_html5
+      data_template:
+        title: "HASS Status"
+        message: "{{ message }}"
 
 # Important notifications (notify everyone, can't be disabled)
 notify_important:
@@ -30,7 +34,7 @@ notify_important:
 
 # Critical notifications (notify everyone, possibly repeatedly) - used for items that need immediate attention (leaking water, furnace not functioning, etc)
 # TODO: How to keep sending this every 30mins?
-notify_cirtical:
+notify_critical:
   alias: 'Critical notification'
   sequence:
     - service: notify.pushbullet_david
