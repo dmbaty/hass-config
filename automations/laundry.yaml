@@ -1,3 +1,5 @@
+### Automations for dryer and washing machine completion
+
 - alias: 'Washing machine done'
   trigger:
     platform: state
@@ -17,3 +19,34 @@
     - service: script.notify_status
       data_template:
         message: 'Dryer done'
+
+
+- alias: 'Dryer done voice'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.dryer_status
+    to: 'off'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '23:00:00'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.alert
+      data_template:
+        message: 'The dryer is done'
+
+- alias: 'Washing machine done voice'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.washing_machine_status
+    to: 'off'
+  condition:
+    condition: time
+    after: '08:00:00'
+    before: '23:00:00'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.alert
+      data_template:
+        message: 'The washing machine is done'
