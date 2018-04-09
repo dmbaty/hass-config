@@ -71,8 +71,8 @@ smart_home:
 laundry:
   name: "Laundry status"
   entities:
-    - sensor.washing_machine_status
-    - sensor.dryer_status
+    - binary_sensor.washing_machine_status
+    - binary_sensor.dryer_status
 
 batteries:
   name: "Battery levels"

@@ -1,8 +1,8 @@
 - alias: 'Washing machine done'
   trigger:
     platform: state
-    entity_id: sensor.washing_machine_status
-    to: 'Off'
+    entity_id: binary_sensor.washing_machine_status
+    to: 'off'
   action:
     - service: script.notify_status
       data_template:
@@ -11,8 +11,8 @@
 - alias: 'Dryer done'
   trigger:
     platform: state
-    entity_id: sensor.dryer_status
-    to: 'Off'
+    entity_id: binary_sensor.dryer_status
+    to: 'off'
   action:
     - service: script.notify_status
       data_template:

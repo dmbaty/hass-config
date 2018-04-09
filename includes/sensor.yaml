@@ -44,25 +44,6 @@
           U2
         {% endif %}
 
-- platform: template
-  sensors:
-    washing_machine_status:
-      friendly_name: "Washing machine status"
-      value_template: >
-        {% if states('sensor.washing_machine_power') | int > 1 %}
-          Running
-        {% else %}
-          Off
-        {% endif %}
-    dryer_status:
-      friendly_name: "Dryer status"
-      value_template: >
-        {% if states('sensor.dryer_burglar') | int == 2 %}
-          Running
-        {% else %}
-          Off
-        {% endif %}
-
 # TODO: add smoke detector battery
 - platform: template
   sensors:

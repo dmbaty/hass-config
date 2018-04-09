@@ -1,0 +1,20 @@
+### Binary sensors
+
+- platform: ring
+
+- platform: template
+  sensors:
+    washing_machine_status:
+      friendly_name: "Washing machine status"
+      delay_off:
+        seconds: 30
+      value_template: >-
+        {{ states('sensor.washing_machine_power') | float > 1 }}
+    dryer_status:
+      friendly_name: "Dryer status"
+      delay_on:
+        seconds: 30
+      delay_off:
+        seconds: 30
+      value_template: >-
+        {{ states('sensor.dryer_burglar') | int != 2 }}

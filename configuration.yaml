@@ -63,9 +63,6 @@ sun:
 # Store input states
 recorder:
 
-binary_sensor:
-  - platform: ring
-
 # Text to speech
 tts:
   - platform: google
@@ -78,6 +75,7 @@ automation old: !include_dir_merge_list automations
 script: !include_dir_merge_named scripts
 envisalink: !include includes/envisalink.yaml
 sensor: !include includes/sensor.yaml
+binary_sensor: !include includes/binary_sensor.yaml
 device_tracker: !include includes/device_tracker.yaml
 zwave: !include includes/zwave.yaml
 media_player: !include includes/media_player.yaml
